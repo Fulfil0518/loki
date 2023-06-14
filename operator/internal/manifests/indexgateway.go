@@ -72,6 +72,9 @@ func NewIndexGatewayStatefulSet(opts Options) *appsv1.StatefulSet {
 	a := commonAnnotations(opts.ConfigSHA1, opts.CertRotationRequiredAt)
 	podSpec := corev1.PodSpec{
 		Affinity: configureAffinity(LabelIndexGatewayComponent, opts.Name, opts.Gates.DefaultNodeAffinity, opts.Stack.Template.IndexGateway),
+		SecurityContext: &corev1.PodSecurityContext{
+			FSGroup: pointer.Int64(10001),
+		},
 		Volumes: []corev1.Volume{
 			{
 				Name: configVolumeName,
