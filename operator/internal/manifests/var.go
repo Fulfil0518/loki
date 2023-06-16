@@ -46,9 +46,10 @@ const (
 	storageVolumeName      = "storage"
 	rulePartsSeparator     = "___"
 
-	walDirectory          = "/tmp/wal"
-	dataDirectory         = "/tmp/loki"
-	rulesStorageDirectory = "/tmp/rules"
+	walDirectory              = "/tmp/wal"
+	dataDirectory             = "/tmp/loki"
+	rulesStorageDirectory     = "/tmp/rules"
+	fakeRulesStorageDirectory = rulesStorageDirectory + "/fake"
 
 	rulerContainerName = "loki-ruler"
 

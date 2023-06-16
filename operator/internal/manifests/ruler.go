@@ -128,6 +128,7 @@ func NewRulerStatefulSet(opts Options) *appsv1.StatefulSet {
 					fmt.Sprintf("-config.file=%s", path.Join(config.LokiConfigMountDir, config.LokiConfigFileName)),
 					fmt.Sprintf("-runtime-config.file=%s", path.Join(config.LokiConfigMountDir, config.LokiRuntimeConfigFileName)),
 					"-config.expand-env=true",
+					"-log.level=debug",
 				},
 				ReadinessProbe: lokiReadinessProbe(),
 				LivenessProbe:  lokiLivenessProbe(),
@@ -167,7 +168,7 @@ func NewRulerStatefulSet(opts Options) *appsv1.StatefulSet {
 					{
 						Name:      rulesStorageVolumeName,
 						ReadOnly:  false,
-						MountPath: rulesStorageDirectory,
+						MountPath: fakeRulesStorageDirectory,
 					},
 				},
 				TerminationMessagePath:   "/dev/termination-log",

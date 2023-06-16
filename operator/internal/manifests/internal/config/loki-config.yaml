@@ -1,6 +1,6 @@
 {{- /*gotype: github.com/grafana/loki/operator/internal/manifests/internal/config.Options*/ -}}
 ---
-auth_enabled: true
+auth_enabled: false
 chunk_store_config:
   chunk_cache_config:
     embedded_cache:
